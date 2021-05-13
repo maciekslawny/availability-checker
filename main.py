@@ -62,7 +62,7 @@ def media_expert():
 
     avilable_products = page.find_all(class_ = 'is-')
     avilavle_products2 = page.find_all(class_ = 'is-available')
-    for product in avilavle_products2:
+    for product in avilavle_products2: 
         avilable_products.append(product)
     
     for product in avilable_products:
