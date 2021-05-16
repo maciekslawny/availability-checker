@@ -66,6 +66,7 @@ def xkom():
             }
 
             final_list.append(product_details)
+    driver.close()
     return final_list
 
 def media_expert():
@@ -102,6 +103,7 @@ def media_expert():
         }
 
         final_list.append(product_details)
+    driver.close()  
     return final_list
 
 def sorting_list_model(data_list):

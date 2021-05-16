@@ -2,23 +2,74 @@ from scrype import *
 from prettytable import PrettyTable
 import os
 
-#test_list = [{'model': '3070', 'name': 'Karta graficzna MSI GeForce RTX 3070 Gaming X Trio 8GB GDDR6 (RTX 3070 GAMING X TRIO)', 'price': '8999', 'link': 'https://www.morele.net/karta-graficzna-msi-geforce-rtx-3070-gaming-x-trio-8gb-gddr6-rtx-3070-gaming-x-trio-7244535/'}, {'model': '3070', 'name': 'Karta graficzna Gigabyte GeForce RTX 3070 Gaming OC 8GB GDDR6 (GV-N3070GAMING OC-8GD)', 'price': '8489', 'link': 'https://www.morele.net/karta-graficzna-gigabyte-geforce-rtx-3070-gaming-oc-8gb-gddr6-gv-n3070gaming-oc-8gd-5944660/'}, {'model': '3070', 'name': 'Karta graficzna MSI GeForce RTX 3070 Ventus 3X OC 8GB GDDR6 (RTX 3070 VENTUS 3X OC)', 'price': '7999', 'link': 'https://www.morele.net/karta-graficzna-msi-geforce-rtx-3070-ventus-3x-oc-8gb-gddr6-rtx-3070-ventus-3x-oc-7244536/'}, {'model': '3070', 'name': 'Karta graficzna Gigabyte Aorus GeForce RTX 3070 Master 8GB GDDR6 (GV-N3070AORUS M-8GD)', 'price': '8489', 'link': 'https://www.morele.net/karta-graficzna-gigabyte-aorus-geforce-rtx-3070-master-8gb-gddr6-gv-n3070aorus-m-8gd-7244534/'}, {'model': '3070', 'name': 'Karta graficzna Gigabyte GeForce RTX 3070 Vision OC 8GB GDDR6 (GV-N3070VISION OC-8GD)', 'price': '8389', 'link': 'https://www.morele.net/karta-graficzna-gigabyte-geforce-rtx-3070-vision-oc-8gb-gddr6-gv-n3070vision-oc-8gd-7244533/'}, {'model': '3070', 'name': 'Karta graficzna Asus TUF GeForce RTX 3070 Gaming OC 8GB GDDR6 (TUF-RTX3070-O8G-GAMING)', 'price': '8689', 'link': 'https://www.morele.net/karta-graficzna-asus-tuf-geforce-rtx-3070-gaming-oc-8gb-gddr6-tuf-rtx3070-o8g-gaming-7244531/'}, {'model': '3070', 'name': 'Karta graficzna Palit GeForce RTX 3070 JetStream 8GB GDDR6 (NE63070019P2-1040J)', 'price': '8389', 'link': 'https://www.morele.net/karta-graficzna-palit-geforce-rtx-3070-jetstream-8gb-gddr6-ne63070019p2-1040j-5945386/'}, {'model': '3070', 'name': 'Karta graficzna Zotac GeForce RTX 3070 Twin Edge OC White Edition 8GB GDDR6 (ZT-A30700J-10P)', 'price': '7989', 'link': 'https://www.morele.net/karta-graficzna-zotac-geforce-rtx-3070-twin-edge-oc-white-edition-8gb-gddr6-zt-a30700j-10p-7698851/'}, {'model': '3070', 'name': 'Karta graficzna Gainward GeForce RTX 3070 Phantom 8GB GDDR6 (471056224-2171)', 'price': '8369', 'link': 'https://www.morele.net/karta-graficzna-gainward-geforce-rtx-3070-phantom-8gb-gddr6-471056224-2171-7698846/'}, {'model': '3070', 'name': 'Karta graficzna Zotac GeForce RTX 3070 Twin Edge OC 8GB GDDR6 (ZT-A30700H-10P)', 'price': '7999', 'link': 'https://www.morele.net/karta-graficzna-zotac-geforce-rtx-3070-twin-edge-oc-8gb-gddr6-zt-a30700h-10p-7463163/'}, {'model': '3070', 'name': 'Karta graficzna Inno3D GeForce RTX 3070 Twin X2 OC 8GB GDDR6 (RTX 3070 TWIN X2 OC)', 'price': '8499', 'link': 'https://www.morele.net/karta-graficzna-inno3d-geforce-rtx-3070-twin-x2-oc-8gb-gddr6-rtx-3070-twin-x2-oc-7698848/'}, {'model': '3070', 'name': 'Karta graficzna MSI GeForce RTX 3070 Suprim X 8GB GDDR6 (RTX 3070 SUPRIM X 8G)', 'price': '8299', 'link': 'https://www.morele.net/karta-graficzna-msi-geforce-rtx-3070-suprim-x-8gb-gddr6-rtx-3070-suprim-x-8g-5945714/'}, {'model': '3070', 'name': 'Karta graficzna Zotac GeForce RTX 3070 AMP Holo 8GB GDDR6 (ZT-A30700F-10P)', 'price': '8189', 'link': 'https://www.morele.net/karta-graficzna-zotac-geforce-rtx-3070-amp-holo-8gb-gddr6-zt-a30700f-10p-7698850/'}, {'model': '3090', 'name': 'Karta graficzna NVIDIA KFA2 GeForce RTX 3090 HOF 24GB GDDR6X', 'price': 14999.0, 'link': '/p/647316-karta-graficzna-nvidia-kfa2-geforce-rtx-3090-hof-24gb-gddr6x.html'}, {'model': '3060', 'name': 'Karta graficzna MSI GeForce RTX 3060 Gaming X Trio 12GB', 'price': 4799, 'link': '/komputery-i-tablety/podzespoly-komputerowe/karty-graficzne/karta-graficzna-msi-geforce-rtx-3060-gaming-x-trio-12gb'}, {'model': '3070', 'name': 'Karta graficzna MSI GeForce RTX 3070 Gaming X Trio 8GB GDDR6', 'price': 7499, 'link': '/komputery-i-tablety/podzespoly-komputerowe/karty-graficzne/karta-graficzna-msi-geforce-rtx-3070-gaming-x-trio'}, {'model': '3090', 'name': 'Karta graficzna MSI GeForce RTX 3090 Suprim X 24GB', 'price': 15999, 'link': '/komputery-i-tablety/podzespoly-komputerowe/karty-graficzne/karta-graficzna-msi-geforce-rtx-3090-suprim-x-24g'}, {'model': '3060', 'name': 'Karta graficzna MSI GeForce RTX 3060 Gaming X 12GB', 'price': 4699, 'link': '/komputery-i-tablety/podzespoly-komputerowe/karty-graficzne/karta-graficzna-msi-geforce-rtx-3060-gaming-x-12gb'}]
+
+graphic_cards_list = sorting_list_model([*morele(), *xkom(), *media_expert()])
 
 
+def your_choice():
+    global graphic_cards_list
+    choice = input("""Co chcesz zrobić?
+1 - Pokaż oferty dla wszystkich modeli (Max 5 sztuk)  3 - Pokaż najtańszą ofertę dla wybranego modelu
+2 - Pokaż wszystkie oferty dla wybranego modelu       4 - Wczytaj dane ze stron
+Wybór: """)
+    if (choice == '1'):
+        os.system('cls')
+        create_table(graphic_cards_list)
+        return
 
-def create_table(card_list):
+    elif (choice == '2' or choice == '3'):
+        choice_model = input (""" 
+Wybierz model: 
+1 - RTX 3060   3 - RTX 3080
+2 - RTX 3070   4 - RTX 3090
+    """)
+        if (choice_model == '1'):
+            choice_model = '3060'
+        elif (choice_model == '2'):
+            choice_model = '3070'
+        elif (choice_model == '3'):
+            choice_model = '3080'
+        elif (choice_model == '4'):
+            choice_model = '3090'
+        
+        if(choice == '2'):
+            choice = None
+
+        create_table(graphic_cards_list, choice_model, choice)
+        return
+    
+    elif(choice == '4'):
+        graphic_cards_list = sorting_list_model([*morele(), *xkom(), *media_expert()])
+        create_table(graphic_cards_list)
+        return
+
+
+def create_table(card_list, choice_model = None, choice = None):
     """Funkcja tworząca tabelę wyświetlającą oferty kart"""
     os.system('cls')
     cards_table = PrettyTable()
-    cards_table.field_names = ["Model", "Cena", "Nazwa", "Sklep"]
-    for model in card_list:
-        for card in card_list[model][0:7]:
+
+    #Wybrany model, wszystkie oferty (5 ofert)
+    if (choice_model == None and choice == None):
+        cards_table.field_names = ["Model", "Cena", "Nazwa", "Sklep"]
+        for model in card_list:
+            for card in card_list[model][0:5]:
+                cards_table.add_row([card['model'], card['price'], card['name'].replace('Karta graficzna ', '')[0:20] + '..', card['sklep']])
+    
+    #Wybrany model, wszystkie oferty
+    elif (choice_model != None and choice == None):
+        cards_table.field_names = ["Model", "Cena", "Nazwa", "Sklep"]
+        for card in card_list[choice_model]:
+            cards_table.add_row([card['model'], card['price'], card['name'].replace('Karta graficzna ', '')[0:20] + '..', card['sklep']])
+
+    #Wybrany model, pierwsza oferta
+    elif (choice_model != None and choice == '3'):
+        cards_table.field_names = ["Model", "Cena", "Nazwa", "Sklep"]
+        for card in card_list[choice_model][0:1]:
             cards_table.add_row([card['model'], card['price'], card['name'].replace('Karta graficzna ', '')[0:20] + '..', card['sklep']])
     
     print(cards_table)
-
-
-graphic_cards_list = sorting_list_model([*morele(), *xkom(), *media_expert()])
+    your_choice()
 
 create_table(graphic_cards_list)
 
