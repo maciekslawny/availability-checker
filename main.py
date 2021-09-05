@@ -2,14 +2,14 @@ from scrype import *
 from prettytable import PrettyTable
 import os
 
-
-graphic_cards_list = sorting_list_model([*morele(), *xkom(), *media_expert()])
-
+graphic_cards_list = sorting_list_model([*morele(), *media_expert()])
 
 def your_choice():
+    """Wybieranie zadania przez użytkownika"""
+
     global graphic_cards_list
     choice = input("""Co chcesz zrobić?
-1 - Pokaż oferty dla wszystkich modeli (Max 5 sztuk)  3 - Pokaż najtańszą ofertę dla wybranego modelu
+1 - Pokaż oferty dla wszystkich modeli (Max 3 sztuk)  3 - Pokaż najtańszą ofertę dla wybranego modelu
 2 - Pokaż wszystkie oferty dla wybranego modelu       4 - Wczytaj dane ze stron
 Wybór: """)
     if (choice == '1'):
@@ -53,7 +53,7 @@ def create_table(card_list, choice_model = None, choice = None):
     if (choice_model == None and choice == None):
         cards_table.field_names = ["Model", "Cena", "Nazwa", "Sklep"]
         for model in card_list:
-            for card in card_list[model][0:5]:
+            for card in card_list[model][0:3]:
                 cards_table.add_row([card['model'], card['price'], card['name'].replace('Karta graficzna ', '')[0:20] + '..', card['sklep']])
     
     #Wybrany model, wszystkie oferty
